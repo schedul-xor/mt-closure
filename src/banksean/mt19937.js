@@ -1,7 +1,5 @@
 goog.provide('banksean.Mt19937');
 
-goog.require('ogiqvo.crypt.Random');
-
 
 
 /**
@@ -40,21 +38,15 @@ The names of its contributors may not be used to endorse or promote products der
  * <p>
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
  *
- * @overview
- * @classdesc Mersenne twister 19937
- * @copyright 1997 - 2002, Makoto Matsumoto and Takuji Nishimura,
- All rights reserved.
+ * @constructor
+ * @description Mersenne twister 19937
  * @author Sean McCullough<banksean@gmail.com>
  * @author Makoto Matsumoto<m-mat@math.sci.hiroshima-u.ac.jp>
  * @see https://gist.github.com/banksean/300494
  * @see http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html
- *
- * @constructor
- * @extends {ogiqvo.crypt.Random}
+ * @copyright 1997 - 2002, Makoto Matsumoto and Takuji Nishimura, All rights reserved.
  */
 banksean.Mt19937 = function() {
-  goog.base(this);
-
   /* Period parameters */
   this.N = 624;
   this.M = 397;
@@ -65,12 +57,11 @@ banksean.Mt19937 = function() {
   this.mt = new Array(this.N); /* the array for the state vector */
   this.mti = this.N + 1; /* mti==N+1 means mt[N] is not initialized */
 };
-goog.inherits(banksean.Mt19937, ogiqvo.crypt.Random);
 
 
 /* initializes mt[N] with a seed */
 /**
- * @override
+ * @param {!number} seed
  */
 banksean.Mt19937.prototype.srand = function(seed) {
   this.mt[0] = seed >>> 0;
@@ -130,7 +121,7 @@ banksean.Mt19937.prototype.srandByArray =
 
 /* generates a random Number on [0, 0xffffffff]-interval */
 /**
- * @override
+ * @return {!number}
  */
 banksean.Mt19937.prototype.getInt32 = function() {
   var y;
@@ -176,7 +167,7 @@ banksean.Mt19937.prototype.getInt32 = function() {
 
 /* generates a random Number on [0, 1)-real-interval */
 /**
- * @override
+ * @return {!number}
  */
 banksean.Mt19937.prototype.getRate = function() {
   return this.getInt32() * (1.0 / 4294967296.0);

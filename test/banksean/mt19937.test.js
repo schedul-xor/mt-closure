@@ -1,3 +1,8 @@
+require('nclosure').nclosure({additionalDeps:['deps.js']});
+expect = require('expect.js');
+
+goog.require('banksean.Mt19937');
+
 describe('banksean.Mt19937',function(){
   var mt19937 = new banksean.Mt19937();
 
@@ -17,7 +22,7 @@ describe('banksean.Mt19937',function(){
     expect(mt19937.getInt32()).to.be(1549632257);
     expect(mt19937.getInt32()).to.be(3747249597);
     expect(mt19937.getInt32()).to.be(3650674304);
-     });
+  });
 
   it('should return proper rate results for given seed 1001',function(){
     mt19937.srand(1001);
