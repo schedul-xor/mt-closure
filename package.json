@@ -1,18 +1,18 @@
 {
-  "name": "murmurhash-closure",
+  "name": "mt-closure",
   "version": "1.0.0",
-  "description": "An optimized JavaScript implementation of the MurmurHash algorithms.",
+  "description": "Mersenne twister in Google Closure style ( https://gist.github.com/banksean/300494 )",
   "scripts": {
     "start": "node tasks/serve.js",
     "test": "node tasks/test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/openlayers/ol3.git"
+    "url": "git://github.com/schedul-xor/mt-closure.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/schedul-xor/murmurhash-closure/issues"
+    "url": "https://github.com/schedul-xor/mt-closure/issues"
   },
   "dependencies": {
     "async": "~0.2.10",
